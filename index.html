@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yazılım Dedektifi: Lisans Macerası</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #2c3e50;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            background-color: #34495e;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            max-width: 600px;
+            width: 90%;
+        }
+        h1 { color: #f1c40f; }
+        p { font-size: 1.2em; line-height: 1.6; }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-blue { background-color: #3498db; color: white; }
+        .btn-green { background-color: #2ecc71; color: white; }
+        .btn-red { background-color: #e74c3c; color: white; }
+        .btn:hover { opacity: 0.9; transform: scale(1.02); }
+        .virus-screen {
+            background-color: red;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="game-container">
+        <h1 id="title">Yazılım Macerası Başlıyor!</h1>
+        <p id="story">Merhaba! Öğretmenin yarına bir proje ödevi verdi. Bilgisayarında yazı yazacak ve resim düzenleyecek programa ihtiyacın var. Ama bu programlar çok pahalı! Ne yapacaksın?</p>
+        <div id="choices">
+            <button class="btn btn-blue" onclick="makeChoice('buy')">Babamdan para isteyip satın alırım.</button>
+            <button class="btn btn-green" onclick="makeChoice('opensource')">Ücretsiz ve açık kaynaklı (LibreOffice) indiririm.</button>
+            <button class="btn btn-red" onclick="makeChoice('crack')">İnternetten 'Crackli Full İndir' diye aratırım.</button>
+        </div>
+    </div>
+
+    <div class="virus-screen" id="virus-screen">
+        <h1 style="font-size: 3em; color: yellow;">⚠️ DİKKAT! SİSTEM TEHLİKEDE! ⚠️</h1>
+        <p style="font-size: 1.5em;">İndirdiğin crack dosyasının içinden 'Trojan' virüsü çıktı.</p>
+        <p>Bilgisayarındaki fotoğraflar kilitlendi ve oyun hesapların çalındı.</p>
+        <button class="btn btn-blue" style="width: 200px;" onclick="location.reload()">Baştan Dene</button>
+    </div>
+
+    <script>
+        const container = document.getElementById('game-container');
+        const title = document.getElementById('title');
+        const story = document.getElementById('story');
+        const choices = document.getElementById('choices');
+        const virusScreen = document.getElementById('virus-screen');
+
+        function makeChoice(choice) {
+            if (choice === 'crack') {
+                virusScreen.style.display = 'flex';
+            } 
+            else if (choice === 'opensource') {
+                title.innerText = "TEBRİKLER! 🎉";
+                story.innerText = "Harika bir seçim! LibreOffice ve GIMP programlarını kurdun. Hiç para ödemedin, bilgisayarın güvende ve ödevini zamanında bitirdin. Gerçek bir Dijital Vatandaşsın!";
+                choices.innerHTML = '<button class="btn btn-blue" onclick="location.reload()">Tekrar Oyna</button>';
+            } 
+            else if (choice === 'buy') {
+                title.innerText = "GÜVENLİ AMA PAHALI 💸";
+                story.innerText = "Programı resmi sitesinden satın aldın. Bilgisayarın güvende ama harçlıkların bitti. Keşke açık kaynak kodlu alternatiflere baksaydın!";
+                choices.innerHTML = '<button class="btn btn-blue" onclick="location.reload()">Tekrar Oyna</button>';
+            }
+        }
+    </script>
+</body>
+</html>
