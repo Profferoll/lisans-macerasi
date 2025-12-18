@@ -3,95 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yazılım Dedektifi: Lisans Macerası</title>
+    <title>Lisans Ayrıştırıcı - 6. Sınıf</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #2c3e50;
-            color: white;
+            font-family: 'Comic Sans MS', 'Arial', sans-serif; /* Çocuksu font */
+            background-color: #f0f8ff;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
-        }
-        .container {
-            background-color: #34495e;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            max-width: 600px;
-            width: 90%;
-        }
-        h1 { color: #f1c40f; }
-        p { font-size: 1.2em; line-height: 1.6; }
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .btn-blue { background-color: #3498db; color: white; }
-        .btn-green { background-color: #2ecc71; color: white; }
-        .btn-red { background-color: #e74c3c; color: white; }
-        .btn:hover { opacity: 0.9; transform: scale(1.02); }
-        .virus-screen {
-            background-color: red;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            display: none;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            z-index: 999;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
         }
+
+        h1 { color: #2c3e50; text-align: center; }
+        .instruction { margin-bottom: 20px; font-size: 1.2em; color: #555; }
+
+        /* Yazılım Kartları Alanı */
+        .items-container {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            min-height: 80px;
+        }
+
+        .draggable {
+            background: white;
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 10px 20px;
+            cursor: grab;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+            user-select: none;
+        }
+        
+        .draggable:active { cursor: grabbing; transform: scale(1.1); }
+        .draggable.correct { background-color: #d4edda; border-color: #28a745; cursor: default; }
+
+        /* Kutuların Alanı */
+        .boxes-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .box {
+            width: 200px;
+            height: 250px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            transition: all 0.3s;
+            border: 3px dashed #aaa;
+            background-color: rgba(255,255,255,0.5);
+        }
+
+        .box h3 { margin: 10px 0; color: white; text-shadow: 1px 1px 2px black; }
+
+        /* Kutu Renkleri */
+        .freeware { background-color: #3498db; border-color: #2980b9; }
+        .shareware { background-color: #f39c12; border-color: #d35400; }
+        .commercial { background-color: #e74c3c; border-color: #c0392b; }
+        .opensource { background-color: #2ecc71; border-color: #27ae60; }
+
+        .box-content {
+            flex-grow: 1;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        /* Sürükleme Efektleri */
+        .box.hovered { transform: scale(1.05); border-style: solid; box-shadow: 0 0 15px rgba(0,0,0,0.2); }
+
+        /* Başarı Mesajı */
+        #success-message {
+            display: none;
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            text-align: center;
+            z-index: 100;
+        }
+        #success-message h2 { color: #2ecc71; font-size: 2em; margin: 0; }
+        .confetti { font-size: 3em; }
+
     </style>
 </head>
 <body>
 
-    <div class="container" id="game-container">
-        <h1 id="title">Yazılım Macerası Başlıyor!</h1>
-        <p id="story">Merhaba! Öğretmenin yarına bir proje ödevi verdi. Bilgisayarında yazı yazacak ve resim düzenleyecek programa ihtiyacın var. Ama bu programlar çok pahalı! Ne yapacaksın?</p>
-        <div id="choices">
-            <button class="btn btn-blue" onclick="makeChoice('buy')">Babamdan para isteyip satın alırım.</button>
-            <button class="btn btn-green" onclick="makeChoice('opensource')">Ücretsiz ve açık kaynaklı (LibreOffice) indiririm.</button>
-            <button class="btn btn-red" onclick="makeChoice('crack')">İnternetten 'Crackli Full İndir' diye aratırım.</button>
+    <h1>🖥️ Yazılım Lisans Ayrıştırıcısı</h1>
+    <p class="instruction">Aşağıdaki programları doğru kutulara sürükleyip bırakın!</p>
+
+    <div class="items-container" id="items">
+        <div class="draggable" draggable="true" id="d1" data-type="freeware">🌐 Google Chrome</div>
+        <div class="draggable" draggable="true" id="d2" data-type="commercial">💰 Windows 11</div>
+        <div class="draggable" draggable="true" id="d3" data-type="shareware">⏳ WinRAR (30 Gün)</div>
+        <div class="draggable" draggable="true" id="d4" data-type="opensource">🐧 Linux (Pardus)</div>
+        <div class="draggable" draggable="true" id="d5" data-type="commercial">🎮 FIFA 24</div>
+        <div class="draggable" draggable="true" id="d6" data-type="opensource">🦊 Mozilla Firefox</div>
+        <div class="draggable" draggable="true" id="d7" data-type="freeware">🐱 Scratch</div>
+        <div class="draggable" draggable="true" id="d8" data-type="shareware">🛡️ Antivirüs (Demo)</div>
+    </div>
+
+    <div class="boxes-container">
+        <div class="box freeware" data-type="freeware">
+            <h3>🆓 Freeware<br><small>(Tamamen Ücretsiz)</small></h3>
+            <div class="box-content"></div>
+        </div>
+
+        <div class="box shareware" data-type="shareware">
+            <h3>⏳ Shareware<br><small>(Deneme Sürümü)</small></h3>
+            <div class="box-content"></div>
+        </div>
+
+        <div class="box commercial" data-type="commercial">
+            <h3>💰 Ticari<br><small>(Paralı Yazılım)</small></h3>
+            <div class="box-content"></div>
+        </div>
+
+        <div class="box opensource" data-type="opensource">
+            <h3>🔓 Açık Kaynak<br><small>(Geliştirilebilir)</small></h3>
+            <div class="box-content"></div>
         </div>
     </div>
 
-    <div class="virus-screen" id="virus-screen">
-        <h1 style="font-size: 3em; color: yellow;">⚠️ DİKKAT! SİSTEM TEHLİKEDE! ⚠️</h1>
-        <p style="font-size: 1.5em;">İndirdiğin crack dosyasının içinden 'Trojan' virüsü çıktı.</p>
-        <p>Bilgisayarındaki fotoğraflar kilitlendi ve oyun hesapların çalındı.</p>
-        <button class="btn btn-blue" style="width: 200px;" onclick="location.reload()">Baştan Dene</button>
+    <div id="success-message">
+        <div class="confetti">🎉🏆🎉</div>
+        <h2>TEBRİKLER!</h2>
+        <p>Tüm yazılımları doğru yerleştirdin!</p>
+        <button onclick="location.reload()" style="padding:10px 20px; cursor:pointer;">Tekrar Oyna</button>
     </div>
 
     <script>
-        const container = document.getElementById('game-container');
-        const title = document.getElementById('title');
-        const story = document.getElementById('story');
-        const choices = document.getElementById('choices');
-        const virusScreen = document.getElementById('virus-screen');
+        const draggables = document.querySelectorAll('.draggable');
+        const boxes = document.querySelectorAll('.box');
+        let correctCount = 0;
+        const totalItems = draggables.length;
 
-        function makeChoice(choice) {
-            if (choice === 'crack') {
-                virusScreen.style.display = 'flex';
-            } 
-            else if (choice === 'opensource') {
-                title.innerText = "TEBRİKLER! 🎉";
-                story.innerText = "Harika bir seçim! LibreOffice ve GIMP programlarını kurdun. Hiç para ödemedin, bilgisayarın güvende ve ödevini zamanında bitirdin. Gerçek bir Dijital Vatandaşsın!";
-                choices.innerHTML = '<button class="btn btn-blue" onclick="location.reload()">Tekrar Oyna</button>';
-            } 
-            else if (choice === 'buy') {
-                title.innerText = "GÜVENLİ AMA PAHALI 💸";
-                story.innerText = "Programı resmi sitesinden satın aldın. Bilgisayarın güvende ama harçlıkların bitti. Keşke açık kaynak kodlu alternatiflere baksaydın!";
-                choices.innerHTML = '<button class="btn btn-blue" onclick="location.reload()">Tekrar Oyna</button>';
+        draggables.forEach(draggable => {
+            draggable.addEventListener('dragstart', () => {
+                draggable.classList.add('dragging');
+            });
+
+            draggable.addEventListener('dragend', () => {
+                draggable.classList.remove('dragging');
+            });
+        });
+
+        boxes.forEach(box => {
+            box.addEventListener('dragover', e => {
+                e.preventDefault(); // Bırakmaya izin ver
+                box.classList.add('hovered');
+            });
+
+            box.addEventListener('dragleave', () => {
+                box.classList.remove('hovered');
+            });
+
+            box.addEventListener('drop', e => {
+                e.preventDefault();
+                box.classList.remove('hovered');
+                
+                const draggingItem = document.querySelector('.dragging');
+                const boxType = box.getAttribute('data-type');
+                const itemType = draggingItem.getAttribute('data-type');
+
+                // Kontrol Mekanizması
+                if (boxType === itemType) {
+                    // Doğru ise
+                    box.querySelector('.box-content').appendChild(draggingItem);
+                    draggingItem.classList.add('correct');
+                    draggingItem.setAttribute('draggable', 'false'); // Artık taşınamasın
+                    
+                    // Başarı Sesi (Opsiyonel)
+                    // new Audio('success.mp3').play();
+
+                    correctCount++;
+                    checkWin();
+                } else {
+                    // Yanlış ise
+                    box.style.backgroundColor = 'red';
+                    setTimeout(() => {
+                        box.style.backgroundColor = ''; // Rengi eski haline getir (CSS class'ına döner)
+                    }, 500);
+                    alert("⚠️ Yanlış Kutu! Tekrar dene.");
+                }
+            });
+        });
+
+        function checkWin() {
+            if (correctCount === totalItems) {
+                document.getElementById('success-message').style.display = 'block';
             }
         }
     </script>
