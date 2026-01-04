@@ -3,95 +3,96 @@
 <head>
 </head>
 <body>
-    Delivered-To: goktugkpc9@gmail.com
-Received: by 2002:a17:504:7dd3:b0:1dfc:ae43:6250 with SMTP id jy19csp160306njb;
-        Sat, 3 Jan 2026 23:44:05 -0800 (PST)
-X-Received: by 2002:a05:7022:687:b0:11b:baa5:f4d1 with SMTP id a92af1059eb24-121721aab3dmr40860112c88.6.1767512645139;
-        Sat, 03 Jan 2026 23:44:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1767512645; cv=none;
-        d=google.com; s=arc-20240605;
-        b=c60gb4WNTE5vKtzsxrjagc/XT+GwY9oEW2ZTGfRywKq/aKAsWDKJ+DB63ZVNJwrqRt
-         vMY4SbgYT3/xKuRaSdMDD5xAQdw6S5GQfgJ0cKJK0O7vCbnUaeBDRxBwBGL3UWvMwSSr
-         zJWgiBAPgacui5l6e+6sc9mcItWxBhhbEE2kyhzeUb5DvlXZ+08jjXxDQIG4jdsiXMrW
-         qXGBgXSK3kTAkn6IDak55f3Pp+mmfgxjoCZm1t9dwKlRLy+ohU7Q6cRR/mvH8jXMoGtD
-         Sw2OUL/kfQPgyebSddaUhtAV1YfTn786coDvERVBM2OtDEqeNLymZy8xpiSCNP3pI4UF
-         b+Ew==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=GWvchAoADxvWG9wVoYT23V75FUexU5j5LSaKzRN449Y=;
-        fh=pt0lFUO8jZ2f7mCGvldKb6QfMQrkLu5wCsExrQpKoqs=;
-        b=EaJAI+/dP4A2BLKwtOie/bwjqqzJHioKOjzRHLnSld1C6j/j1Tf3q162ig7DHSKlFL
-         qi8xrYGD3FNX1+S20r/E1VsBSw9uOBdhDAxseEcSR19E8lRAWqr/TTl55JqQ9jrmQfFS
-         qCLeddcQ1ZXHVT3d7/ryzWfNHKb9h069I96N89kT9gapIEg8gKRujw/jkCcrLl0db+/h
-         oMupq1vQ2GbSRrlS7taXFOdIsvdfMG8Yf1urJLJYlFUd26Rag1dScCIaUoMGh7XbY+ac
-         bNI0JLhAQLSKn0qziwtu/ecDXJzGuZg+0c4uzLshJpIsK7QRSJ4e36BUeW/7yfOVEQ7+
-         69yA==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="N/X3JbMP";
-       spf=pass (google.com: domain of gktorescue@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=gktorescue@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=pass header.i=@gmail.com
-Return-Path: <gktorescue@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5a478bee46e88-2b140c41b54sor390757eec.23.2026.01.03.23.44.04
-        for <goktugkpc9@gmail.com>
-        (Google Transport Security);
-        Sat, 03 Jan 2026 23:44:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of gktorescue@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="N/X3JbMP";
-       spf=pass (google.com: domain of gktorescue@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=gktorescue@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=pass header.i=@gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1767512644; x=1768117444; dara=google.com;
-        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=GWvchAoADxvWG9wVoYT23V75FUexU5j5LSaKzRN449Y=;
-        b=N/X3JbMPJPgZzK3ZCzidy3u2ZgdTiiXetcBU0tk+sjEO2nMCqbCcB8Nir/0uPtciAI
-         Tn1VHmvI1jvm/s084oAdleLfYWznH9vmGQqby3+BKrob33inQ2+yetf44ctMk9jWt388
-         G26ZO0jnmDPI6H8jlQcg5AQEe7taN+t3toatsJ8AxFl8eOcLu1E+F/hzlq5rWikjgiQu
-         diCNwNrLheNSTy8HfGVivHZc628miB5CZTasdNcxv5nVxI1iV71AxdoPpDqR/wp1w6LS
-         ss6/k4FgO35Qr8Y90g3ye0x+HJr8O6j4RhQUggepeyzvfc+C+XNsK+F1Wrq8VxBjX6zB
-         hPZg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767512644; x=1768117444;
-        h=to:subject:message-id:date:from:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=GWvchAoADxvWG9wVoYT23V75FUexU5j5LSaKzRN449Y=;
-        b=sbB3OcrPGQRYKIx9YQCawhA1FRQRl1U7W5/H8jBMI+rlQ09BuyG184Hy45a0w7YqvT
-         vGWMJOy8oOwQegqA28C4/0gluuP69coTVhBZNioD0oSm7a//seydcfmJz+VP+4RzduLS
-         9PyrmNjgv9pQmpveY07lm8PgbYQ2eFkqkyQKLchCgNA2qf31UEPzr+DdO8VY0Iz71OHf
-         dlWGCJ+skRATcwAj5j89ZVnXg1CLuecSDxEQOKQGkz3wWCQmSOE5XIPpC7Ovt2a7dvdp
-         TllhQ0Z3LIM6Cfgm+Bk9ibYckyXVsRSL5zozMXh0tyB4i0l3vydarePYYdbkvWLwu1QN
-         N4jg==
-X-Gm-Message-State: AOJu0YyvZyuqEuGB2Fc1qCCJ26EtCouEI3ZRPai1CHnobpi/gNTHnJYy E8824qPVaY1l7G7N4To4mqO1cR3jZCulTQ5vher6I+/vZbU7QAsiCWB5Zw96lRNF+60TC4t1K03 qbeTB7YLSFzdh9lRQFSqHihFOgAjzjXFycDGf4W4=
-X-Gm-Gg: AY/fxX5j7AO9MCtkWCrLER0l4Qz1Diaq4TmTjJrYGWfkcha8w3PAsLgTKNcn78VmlGn muFowbFHvZAKQ3Z6ndRyvKWUSLcbwZrWZ+FLgp3NqpUyeXKkIM/Q7JOO8FiarzymXNtSqBlqc5V FpP+r+RI1za2vMgdDf8C/Lf541yTIac+nKbtbmKbipallYHHmqI4CN1o1v41BSG8mnUuGVMHbrO YuLfN56oGm7WtUuVLDXConVX3VFfGF+A2lH4YJ/v4ajdK5Z46UMm3hvjNAr/vZy7yKwLgl+
-X-Google-Smtp-Source: AGHT+IHaIyVo088WBqXRAAptvUBng1DH7Xhp5eUaTwSerCYoqFVWWasV4etwKDo9mShekFKxyFHFIajePp2HyL6IU+c=
-X-Received: by 2002:a05:7022:687:b0:11b:baa5:f4d1 with SMTP id a92af1059eb24-121721aab3dmr40860091c88.6.1767512643919; Sat, 03 Jan 2026 23:44:03 -0800 (PST)
-MIME-Version: 1.0
-From: "Göktuğ Küpücü" <gktorescue@gmail.com>
-Date: Sun, 4 Jan 2026 10:43:51 +0300
-X-Gm-Features: AQt7F2os3HuzPFVGWnJJ4-9BIhNpQV_8iyMSGDUf8Tx4OLAT13NdJBBOCitkdfQ
-Message-ID: <CA+5P4ibg2JaD8Q=BCV+qiCygzKu0smNatkKA1HLfX2_UH-kqJg@mail.gmail.com>
-Subject: Test
-To: "goktugkpc9@gmail.com" <goktugkpc9@gmail.com>
-Content-Type: multipart/alternative; boundary="00000000000046e30506478b1b02"
+    Delivered-To: goktugkpc9@gmail.com\n
+Received: by 2002:a17:504:7dd3:b0:1dfc:ae43:6250 with SMTP id jy19csp160306njb;\n
+        Sat, 3 Jan 2026 23:44:05 -0800 (PST)\n
+X-Received: by 2002:a05:7022:687:b0:11b:baa5:f4d1 with SMTP id a92af1059eb24-121721aab3dmr40860112c88.6.1767512645139;\n
+        Sat, 03 Jan 2026 23:44:05 -0800 (PST)\n
+ARC-Seal: i=1; a=rsa-sha256; t=1767512645; cv=none;\n
+        d=google.com; s=arc-20240605;\n
+        b=c60gb4WNTE5vKtzsxrjagc/XT+GwY9oEW2ZTGfRywKq/aKAsWDKJ+DB63ZVNJwrqRt\n
+         vMY4SbgYT3/xKuRaSdMDD5xAQdw6S5GQfgJ0cKJK0O7vCbnUaeBDRxBwBGL3UWvMwSSr\n
+         zJWgiBAPgacui5l6e+6sc9mcItWxBhhbEE2kyhzeUb5DvlXZ+08jjXxDQIG4jdsiXMrW\n
+         qXGBgXSK3kTAkn6IDak55f3Pp+mmfgxjoCZm1t9dwKlRLy+ohU7Q6cRR/mvH8jXMoGtD\n
+         Sw2OUL/kfQPgyebSddaUhtAV1YfTn786coDvERVBM2OtDEqeNLymZy8xpiSCNP3pI4UF\n
+         b+Ew==\n
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;\n
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;\n
+        bh=GWvchAoADxvWG9wVoYT23V75FUexU5j5LSaKzRN449Y=;\n
+        fh=pt0lFUO8jZ2f7mCGvldKb6QfMQrkLu5wCsExrQpKoqs=;\n
+        b=EaJAI+/dP4A2BLKwtOie/bwjqqzJHioKOjzRHLnSld1C6j/j1Tf3q162ig7DHSKlFL\n
+         qi8xrYGD3FNX1+S20r/E1VsBSw9uOBdhDAxseEcSR19E8lRAWqr/TTl55JqQ9jrmQfFS\n
+         qCLeddcQ1ZXHVT3d7/ryzWfNHKb9h069I96N89kT9gapIEg8gKRujw/jkCcrLl0db+/h\n
+         oMupq1vQ2GbSRrlS7taXFOdIsvdfMG8Yf1urJLJYlFUd26Rag1dScCIaUoMGh7XbY+ac\n
+         bNI0JLhAQLSKn0qziwtu/ecDXJzGuZg+0c4uzLshJpIsK7QRSJ4e36BUeW/7yfOVEQ7+\n
+         69yA==;\n
+        dara=google.com\n
+ARC-Authentication-Results: i=1; mx.google.com;\n
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="N/X3JbMP";\n
+       spf=pass (google.com: domain of gktorescue@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=gktorescue@gmail.com;\n
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;\n
+       dara=pass header.i=@gmail.com\n
+Return-Path: <gktorescue@gmail.com>\n
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])\n
+        by mx.google.com with SMTPS id 5a478bee46e88-2b140c41b54sor390757eec.23.2026.01.03.23.44.04\n
+        for <goktugkpc9@gmail.com>\n
+        (Google Transport Security);\n
+        Sat, 03 Jan 2026 23:44:05 -0800 (PST)\n
+Received-SPF: pass (google.com: domain of gktorescue@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;\n
+Authentication-Results: mx.google.com;\n
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="N/X3JbMP";\n
+       spf=pass (google.com: domain of gktorescue@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=gktorescue@gmail.com;\n
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;\n
+       dara=pass header.i=@gmail.com\n
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;\n
+        d=gmail.com; s=20230601; t=1767512644; x=1768117444; dara=google.com;\n
+        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject\n
+         :date:message-id:reply-to;\n
+        bh=GWvchAoADxvWG9wVoYT23V75FUexU5j5LSaKzRN449Y=;\n
+        b=N/X3JbMPJPgZzK3ZCzidy3u2ZgdTiiXetcBU0tk+sjEO2nMCqbCcB8Nir/0uPtciAI\n
+         Tn1VHmvI1jvm/s084oAdleLfYWznH9vmGQqby3+BKrob33inQ2+yetf44ctMk9jWt388\n
+         G26ZO0jnmDPI6H8jlQcg5AQEe7taN+t3toatsJ8AxFl8eOcLu1E+F/hzlq5rWikjgiQu\n
+         diCNwNrLheNSTy8HfGVivHZc628miB5CZTasdNcxv5nVxI1iV71AxdoPpDqR/wp1w6LS\n
+         ss6/k4FgO35Qr8Y90g3ye0x+HJr8O6j4RhQUggepeyzvfc+C+XNsK+F1Wrq8VxBjX6zB\n
+         hPZg==\n
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;\n
+        d=1e100.net; s=20230601; t=1767512644; x=1768117444;\n
+        h=to:subject:message-id:date:from:mime-version:x-gm-gg\n
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;\n
+        bh=GWvchAoADxvWG9wVoYT23V75FUexU5j5LSaKzRN449Y=;\n
+        b=sbB3OcrPGQRYKIx9YQCawhA1FRQRl1U7W5/H8jBMI+rlQ09BuyG184Hy45a0w7YqvT\n
+         vGWMJOy8oOwQegqA28C4/0gluuP69coTVhBZNioD0oSm7a//seydcfmJz+VP+4RzduLS\n
+         9PyrmNjgv9pQmpveY07lm8PgbYQ2eFkqkyQKLchCgNA2qf31UEPzr+DdO8VY0Iz71OHf\n
+         dlWGCJ+skRATcwAj5j89ZVnXg1CLuecSDxEQOKQGkz3wWCQmSOE5XIPpC7Ovt2a7dvdp\n
+         TllhQ0Z3LIM6Cfgm+Bk9ibYckyXVsRSL5zozMXh0tyB4i0l3vydarePYYdbkvWLwu1QN\n
+         N4jg==\n
+X-Gm-Message-State: AOJu0YyvZyuqEuGB2Fc1qCCJ26EtCouEI3ZRPai1CHnobpi/gNTHnJYy E8824qPVaY1l7G7N4To4mqO1cR3jZCulTQ5vher6I+/vZbU7QAsiCWB5Zw96lRNF+60TC4t1K03 qbeTB7YLSFzdh9lRQFSqHihFOgAjzjXFycDGf4W4=\n
+X-Gm-Gg: AY/fxX5j7AO9MCtkWCrLER0l4Qz1Diaq4TmTjJrYGWfkcha8w3PAsLgTKNcn78VmlGn muFowbFHvZAKQ3Z6ndRyvKWUSLcbwZrWZ+FLgp3NqpUyeXKkIM/Q7JOO8FiarzymXNtSqBlqc5V FpP+r+RI1za2vMgdDf8C/Lf541yTIac+nKbtbmKbipallYHHmqI4CN1o1v41BSG8mnUuGVMHbrO YuLfN56oGm7WtUuVLDXConVX3VFfGF+A2lH4YJ/v4ajdK5Z46UMm3hvjNAr/vZy7yKwLgl+\n
+X-Google-Smtp-Source: AGHT+IHaIyVo088WBqXRAAptvUBng1DH7Xhp5eUaTwSerCYoqFVWWasV4etwKDo9mShekFKxyFHFIajePp2HyL6IU+c=\n
+X-Received: by 2002:a05:7022:687:b0:11b:baa5:f4d1 with SMTP id a92af1059eb24-121721aab3dmr40860091c88.6.1767512643919; Sat, 03 Jan 2026 23:44:03 -0800 (PST)\n
+MIME-Version: 1.0\n
+From: "Göktuğ Küpücü" <gktorescue@gmail.com>\n
+Date: Sun, 4 Jan 2026 10:43:51 +0300\n
+X-Gm-Features: AQt7F2os3HuzPFVGWnJJ4-9BIhNpQV_8iyMSGDUf8Tx4OLAT13NdJBBOCitkdfQ\n
+Message-ID: <CA+5P4ibg2JaD8Q=BCV+qiCygzKu0smNatkKA1HLfX2_UH-kqJg@mail.gmail.com>\n
+Subject: Test\n
+To: "goktugkpc9@gmail.com" <goktugkpc9@gmail.com>\n
+Content-Type: multipart/alternative; boundary="00000000000046e30506478b1b02"\n
+\n
+--00000000000046e30506478b1b02\n
+Content-Type: text/plain; charset="UTF-8"\n
+\n
+Tested\n
+\n
+--00000000000046e30506478b1b02\n
+Content-Type: text/html; charset="UTF-8"\n
+\n
+<div dir="auto">Tested</div>\n
+\n
+--00000000000046e30506478b1b02--\n
+</body>\n
+</html>\n
 
---00000000000046e30506478b1b02
-Content-Type: text/plain; charset="UTF-8"
-
-Tested
-
---00000000000046e30506478b1b02
-Content-Type: text/html; charset="UTF-8"
-
-<div dir="auto">Tested</div>
-
---00000000000046e30506478b1b02--
-</body>
-</html>
 
 
 
