@@ -3,4 +3,69 @@
 <head>
 </head>
 <body>
+  Delivered-To: user@example.com<br>
+Received: by 2002:a17:000:0000:b0:abcd:ef12:3456 with SMTP id abc123;<br>
+        Sat, 03 Jan 2026 23:44:05 -0800 (PST)<br>
+X-Received: by 2002:a05:0000:000:b0:111:2222:3333 with SMTP id xyz987;<br>
+        Sat, 03 Jan 2026 23:44:05 -0800 (PST)<br>
+<br>
+ARC-Seal: i=1; a=rsa-sha256; t=1767512645; cv=none;<br>
+        d=example.com; s=arc-test;<br>
+        b=REDACTED<br>
+<br>
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;<br>
+        d=example.com; s=arc-test;<br>
+        h=to:subject:message-id:date:from:mime-version;<br>
+        bh=REDACTED;<br>
+        b=REDACTED<br>
+
+ARC-Authentication-Results: i=1; mx.example.com;<br>
+       dkim=pass;<br>
+       spf=pass;<br>
+       dmarc=pass<br>
+
+Return-Path: <sender@example.com><br>
+<br>
+Received: from mail.example.net (mail.example.net. [203.0.113.41])<br>
+        by mx.example.com with SMTPS id abc987<br>
+        for <user@example.com>;<br>
+        Sat, 03 Jan 2026 23:44:04 -0800 (PST)<br>
+<br>
+Received-SPF: pass (example.com: domain of sender@example.com designates<br>
+        203.0.113.41 as permitted sender)<br>
+<br>
+Authentication-Results: mx.example.com;<br>
+       dkim=pass;<br>
+       spf=pass;<br>
+       dmarc=pass<br>
+<br>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;<br>
+        d=example.com; s=testkey;<br>
+        t=1767512644;<br>
+        h=to:subject:message-id:date:from:mime-version;<br>
+        bh=REDACTED;<br>
+        b=REDACTED<br>
+<br>
+MIME-Version: 1.0<br>
+From: "Example Sender" <sender@example.com><br>
+Date: Sun, 4 Jan 2026 10:43:51 +0300<br>
+Message-ID: <example-message-id@example.com><br>
+Subject: Test<br>
+To: "Example User" <user@example.com><br>
+Content-Type: multipart/alternative;<br>
+ boundary="000000000000abcdef123456"<br>
+<br>
+--000000000000abcdef123456<br>
+Content-Type: text/plain; charset="UTF-8"<br>
+<br>
+Tested<br>
+
+--000000000000abcdef123456<br>
+Content-Type: text/html; charset="UTF-8"<br>
+
+<div dir="auto">Tested</div><br>
+
+--000000000000abcdef123456--<br>
+
 </body>
+
